@@ -169,9 +169,9 @@ docker-compose up --build
 
 ## Documentación y Pruebas
 
-- **Casos de Prueba en Postman**: Puedes usar los comandos `curl` anteriores o importarlos en Postman para ejecutar las pruebas.
+- **Casos de Prueba en Postman**: Puedes usar los comandos `curl` anteriores o importarlos en Postman para ejecutar las pruebas. O importar directamente 'Collection-apis' a postman, el cual ya tiene la coleccion con las apis.
 - **Manejo de Errores**: El sistema retorna errores específicos (401 para paciente ya existente, 404 para paciente no encontrado).
 
 ## Notas Adicionales
 
-- **Justificación del Modelo**: MongoDB permite almacenar estructuras JSON fácilmente, lo cual facilita la integración con APIs REST y soporta escalabilidad en NoSQL.
+- **Justificación del Modelo**: MongoDB es una base de datos NoSQL que permite almacenar datos en formato JSON, lo que facilita la representación de estructuras de datos complejas y anidadas. Esta flexibilidad es ideal para aplicaciones que requieren un esquema dinámico, como un sistema de gestión de historial médico, donde los datos pueden variar entre diferentes pacientes. Además, MongoDB ofrece escalabilidad horizontal, lo que permite manejar grandes volúmenes de datos y un alto rendimiento en consultas. Su amplia comunidad y abundante documentación hacen que sea una opción accesible y bien soportada para desarrolladores, lo que acelera el proceso de desarrollo y la resolución de problemas.
