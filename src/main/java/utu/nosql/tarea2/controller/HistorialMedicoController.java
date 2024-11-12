@@ -32,10 +32,22 @@ public class HistorialMedicoController {
     }
 
     @GetMapping("/pacientes/{ci}/historial")
-    public List<RegistroMedico> consultarHistorial(@PathVariable String ci, @RequestParam int page, @RequestParam int size) {
-        if (size <= 0) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El tamaño de la página debe ser mayor que cero");
+    public List<RegistroMedico> consultarHistorial(
+            @PathVariable String ci,
+            @RequestParam(required = false) Integer page,
+            @RequestParam(required = false) Integer size,
+            @RequestParam(required = false) String tipo,
+            @RequestParam(required = false) String diagnostico,
+            @RequestParam(required = false) String medico,
+            @RequestParam(required = false) String institucion) {
+
+        if (page != null && size != null) {
+            if (size <= 0) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El tamaño de la página debe ser mayor que cero");
+            }
+            return historialService.consultarHistorial(ci, PageRequest.of(page, size));
+        } else {
+            return historialService.obtenerRegistrosPorCriterio(ci, tipo, diagnostico, medico, institucion);
         }
-        return historialService.consultarHistorial(ci, PageRequest.of(page, size));
     }
 }
