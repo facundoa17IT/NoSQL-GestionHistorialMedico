@@ -172,6 +172,36 @@ docker-compose up --build
 - **Casos de Prueba en Postman**: Puedes usar los comandos `curl` anteriores o importarlos en Postman para ejecutar las pruebas. O importar directamente 'Collection-apis' a postman, el cual ya tiene la coleccion con las apis.
 - **Manejo de Errores**: El sistema retorna errores específicos (401 para paciente ya existente, 404 para paciente no encontrado).
 
+## Ejecución de Pruebas de Carga con JMeter
+
+Este proyecto incluye un plan de pruebas de carga de JMeter para analizar el rendimiento de los servicios REST. A continuación, se explican los pasos para ejecutar este plan de pruebas.
+
+### Requisitos Previos
+
+- **Apache JMeter** instalado.
+- **Java** configurado correctamente en tu sistema (se recomienda OpenJDK 11 o superior).
+- Archivo del plan de pruebas **historialMedicoPlanJMeter.jmx**.
+
+### Pasos para Ejecutar el Plan de Pruebas
+
+1. **Abrir JMeter:**
+  - Ejecuta el archivo jmeter.bat (en Windows) o jmeter (en macOS/Linux) desde la carpeta bin de JMeter.
+
+2. **Cargar el Plan de Pruebas:**
+  - En JMeter, ve a File > Open y selecciona el archivo historialMedicoPlanJMeter.jmx.
+
+3. **Verificar Configuración:**
+  - Asegúrate de que los elementos del plan, como el número de usuarios (threads) y la URL de destino de las pruebas, están configurados correctamente según tu entorno de pruebas (por defecto, http://localhost:8080).
+
+4. **Ejecutar el Plan de Pruebas:**
+  - Haz clic en el botón Start (el ícono de play) para iniciar la prueba de carga.
+  - Observa los resultados en tiempo real en los diferentes listeners incluidos en el plan de pruebas, como View Results Tree y Summary Report.
+
+5. **Revisar los Resultados:**
+  - Una vez finalizada la prueba, revisa los reportes para analizar el rendimiento de la API, incluyendo métricas de tiempo de respuesta y tasa de errores.
+
 ## Notas Adicionales
 
 - **Justificación del Modelo**: MongoDB es una base de datos NoSQL que permite almacenar datos en formato JSON, lo que facilita la representación de estructuras de datos complejas y anidadas. Esta flexibilidad es ideal para aplicaciones que requieren un esquema dinámico, como un sistema de gestión de historial médico, donde los datos pueden variar entre diferentes pacientes. Además, MongoDB ofrece escalabilidad horizontal, lo que permite manejar grandes volúmenes de datos y un alto rendimiento en consultas. Su amplia comunidad y abundante documentación hacen que sea una opción accesible y bien soportada para desarrolladores, lo que acelera el proceso de desarrollo y la resolución de problemas.
+
+
